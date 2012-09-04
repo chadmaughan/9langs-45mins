@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
+    
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+
+    <style type="text/css">
+        .title {
+            background-color: #CCCCCC;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px 0px 10px 0px;
+            width: 100%;
+        }
+        .language {
+            padding-left: 20px;
+            color: #666;
+            font-weight: bold;
+            font-size: 40px;
+        }
+        .timer {
+            font-size: 35px;
+            font-weight: bold;
+            font-family: monospace,monospace;
+            width: 120px;
+            height: 50px;
+            float: right;
+            padding: 0 20px 0 0;
+        }
+
+        .timer > span {
+            width: 48%;
+            height: 50px;
+            text-align: right;
+        }
+
+        .timer #minute {
+            float: left;
+        }
+
+        .timer #second {
+            float: right;
+        }
+
+        .timer span div {
+            background: #444;
+            color: papayawhip;
+            padding: 5px 7px 1px 0px;
+            border-radius: 10px;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        var seconds = 300
+        var total;
+        var timer;
+
+        function clearTimer() {
+            console.log('clear timer');
+            total = seconds;
+            clearInterval(timer);
+        }
+
+        function resetTimer() {
+            console.log('reset timer');
+            timer = setInterval(function () {
+                total--;
+
+                // clear the timer if it gets to zero
+                if(total == 0) {
+                    clearTimer();
+                }
+                else {
+
+                    var min = Math.floor(total / 60);
+                    $('#minute > div').text(pad(min));
+
+                    var sec = total % 60;
+                    $('#second > div').text(pad(sec));
+                }
+            }, 1000);
+        }
+
+        function pad(number) {
+            number = '' + number;
+            while (number.length < 2) {
+                number = '0' + number;
+            }
+            return number;
+        }
+
+    </script>
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <!-- INTRO -->
+    <div id="introduction" data-title="Introduction" data-x="0" data-y="0" class="step slide">
+        <q>9 Languages in 45 minutes</q>
+    </div>
+
+    <!-- CLOJURE -->
+    <div id="clojure" data-title="Clojure" data-timer="true" data-x="0" data-y="1000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- ERLANG -->
+    <div id="erlang" data-title="Erlang" data-timer="true" data-x="0" data-y="2000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- GO -->
+    <div id="go" data-title="Go" data-timer="true" data-x="0" data-y="3000" class="step slide">
+        <q></q>
+    </div>
+
+    <div data-x="1000" data-y="3000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- HASKELL -->
+    <div id="haskell" data-title="Haskell" data-timer="true" data-x="0" data-y="4000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- IO -->
+    <div id="io" data-title="Io" data-timer="true" data-x="0" data-y="5000" class="step slide">
+        <q></q>
+    </div>
+
+    <div data-x="1000" data-y="5000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- PROLOG -->
+    <div id="prolog" data-title="Prolog" data-timer="true" data-x="0" data-y="6000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- R -->
+    <div id="r" data-title="R" data-timer="true" data-x="0" data-y="7000" class="step slide">
+        <q></q>
+    </div>
+
+    <div data-x="1000" data-y="7000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- RUBY -->
+    <div id="ruby" data-title="Ruby" data-timer="true" data-x="0" data-y="8000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- SCALA -->
+    <div id="scala" data-title="Scala" data-timer="true" data-x="0" data-y="9000" class="step slide">
+        <q></q>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div id="overview" class="step" data-x="5000" data-y="5000" data-scale="15">
+    </div>
+
+</div>
+
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
