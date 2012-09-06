@@ -445,23 +445,28 @@
 
             // don't add it if it already has it
             if(!jQuery.contains(el, $('.title'))) {
-                var html = "<div class='title'>" +
-                                    "<span class='language'>" + title + "</span>" +
-                                    "<div class='timer'>" +
-                                        "<span id='minute'><div class='number'>05</div></span>" +
-                                        "<span id='second'><div class='number'>00</div></span>" +
-                                    "</div>" +
-                                "</div>" + el.innerHTML;
 
-                el.innerHTML = html;
+                // don't add the title for introduction slides, etc
+                if(el.getAttribute("data-notitle") == null) {
+                    var html = "<div class='title'><span class='language'>" + title + "</span>";
+
+                    if(el.getAttribute("data-notimer") == null) {
+
+                        html += "<div class='timer'>" +
+                                            "<span id='minute'><div class='number'>05</div></span>" +
+                                            "<span id='second'><div class='number'>00</div></span>" +
+                                        "</div>";
+                    }
+
+                    html += "</div>" + el.innerHTML;
+
+                    el.innerHTML = html;
+                }
             }
 
             // CHAD - add the timer (reset if necessary w/ data-timer="reset")
-            var timer = el.getAttribute("data-timer");
-            if(timer != null) {
-                console.log("reseting timer");
-                clearTimer();
-                resetTimer();
+            if(el.getAttribute("data-timer") != null) {
+                startTimer(el.getAttribute("data-lang"));
             }
 
             if ( activeStep ) {

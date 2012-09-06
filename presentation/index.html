@@ -4,19 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
+    <title>9langs-45mins</title>
     
-    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
-    <meta name="author" content="Bartek Szopka" />
-
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
     <link href="css/impress-demo.css" rel="stylesheet" />
     
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
 
     <style type="text/css">
         .title {
@@ -65,21 +60,126 @@
             border-radius: 10px;
         }
 
-    </style>
-
-    <script type="text/javascript">
-        var seconds = 300
-        var total;
-        var timer;
-
-        function clearTimer() {
-            console.log('clear timer');
-            total = seconds;
-            clearInterval(timer);
+        p {
+            text-align: center;
         }
 
-        function resetTimer() {
-            console.log('reset timer');
+        a {
+            font-size: 18pt;
+        }
+    </style>
+
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <!-- INTRO -->
+    <div id="introduction" data-notitle="true" data-x="0" data-y="0" class="step slide">
+        <q>
+            <p>9 Languages in 45 minutes</p>
+            <p class="bottom">
+                <a href="http://github.com/chadmaughan/9langs-45mins">http://github.com/chadmaughan/9langs-45mins</a>
+            </p>
+        </q>
+    </div>
+
+    <div id="us" data-title="Us" data-notimer="true" data-x="1000" data-y="0" class="step slide">
+        <q>
+            <ul>
+                <li>Chad Maughan<br/>@chadmaughan</li>
+                <li>Miles Pomeroy</li>
+                <li>Jonathan Geddes</li>
+            </ul>
+        </q>
+    </div>
+
+    <!-- CLOJURE -->
+    <l id="clojure" class="lang"></l>
+
+    <!-- ERLANG -->
+    <l id="erlang" class="lang"></l>
+
+    <!-- GO -->
+    <l id="go" class="lang"></l>
+
+    <!-- HASKELL -->
+    <l id="haskell" class="lang"></l>
+
+    <!-- IO -->
+    <l id="io" class="lang"></l>
+
+    <!-- PROLOG -->
+    <l id="prolog" class="lang"></l>
+
+    <!-- R -->
+    <l id="r" class="lang"></l>
+
+    <!-- RUBY -->
+    <l id="ruby" class="lang"></l>
+
+    <!-- SCALA -->
+    <l id="scala" class="lang"></l>
+
+    <!-- OVERVIEW -->
+    <div id="overview" class="step" data-x="5000" data-y="5000" data-scale="15"></div>
+
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        console.log("loading templates");
+        $('.lang').each(function(i) {
+
+            var lang = $(this).attr('id');
+            console.log("getting language: " + lang);
+
+            $.get('templates/' + lang + '.html', function (data) {
+                console.log("loaded template: " + lang);
+                $('#' + lang).replaceWith(data);
+
+                $("div[data-lang='" + lang + "']").each(function(index) {
+                    $(this).attr("data-y", (i + 1) * 1000);
+                    $(this).attr("data-x", index * 1000);
+                    console.log('positioning: ' + lang + ', data-x: ' + $(this).attr('data-x')+ ' data-y: ' + $(this).attr('data-y'));
+                });
+            });
+        });
+
+        init();
+    });
+
+    var seconds = 300
+    var total = seconds;
+    var timer = null;
+    var startedTimers = [];
+
+    function clearTimer() {
+        console.log('clear timer');
+        total = seconds;
+        clearInterval(timer);
+        timer = null;
+    }
+
+    function startTimer(timerName) {
+        if(jQuery.inArray(timerName, startedTimers) < 0) {
+
+            if(timer != null) {
+                clearTimer();
+            }
+
+            console.log("started timer: " + timerName);
+            startedTimers.push(timerName);
+
             timer = setInterval(function () {
                 total--;
 
@@ -97,103 +197,37 @@
                 }
             }, 1000);
         }
-
-        function pad(number) {
-            number = '' + number;
-            while (number.length < 2) {
-                number = '0' + number;
-            }
-            return number;
+        else {
+            console.log("already started: " + timer);
         }
+    }
 
-    </script>
-</head>
+    function pad(number) {
+        number = '' + number;
+        while (number.length < 2) {
+            number = '0' + number;
+        }
+        return number;
+    }
 
-<body class="impress-not-supported">
-
-<div class="fallback-message">
-    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
-    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
-</div>
-
-<div id="impress">
-
-    <!-- INTRO -->
-    <div id="introduction" data-title="Introduction" data-x="0" data-y="0" class="step slide">
-        <q>9 Languages in 45 minutes</q>
-    </div>
-
-    <!-- CLOJURE -->
-    <div id="clojure" data-title="Clojure" data-timer="true" data-x="0" data-y="1000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- ERLANG -->
-    <div id="erlang" data-title="Erlang" data-timer="true" data-x="0" data-y="2000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- GO -->
-    <div id="go" data-title="Go" data-timer="true" data-x="0" data-y="3000" class="step slide">
-        <q></q>
-    </div>
-
-    <div data-x="1000" data-y="3000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- HASKELL -->
-    <div id="haskell" data-title="Haskell" data-timer="true" data-x="0" data-y="4000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- IO -->
-    <div id="io" data-title="Io" data-timer="true" data-x="0" data-y="5000" class="step slide">
-        <q></q>
-    </div>
-
-    <div data-x="1000" data-y="5000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- PROLOG -->
-    <div id="prolog" data-title="Prolog" data-timer="true" data-x="0" data-y="6000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- R -->
-    <div id="r" data-title="R" data-timer="true" data-x="0" data-y="7000" class="step slide">
-        <q></q>
-    </div>
-
-    <div data-x="1000" data-y="7000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- RUBY -->
-    <div id="ruby" data-title="Ruby" data-timer="true" data-x="0" data-y="8000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- SCALA -->
-    <div id="scala" data-title="Scala" data-timer="true" data-x="0" data-y="9000" class="step slide">
-        <q></q>
-    </div>
-
-    <!-- OVERVIEW -->
-    <div id="overview" class="step" data-x="5000" data-y="5000" data-scale="15">
-    </div>
-
-</div>
-
-<script>
-if ("ontouchstart" in document.documentElement) { 
-    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-}
 </script>
 
-<script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script>
+    if ("ontouchstart" in document.documentElement) {
+        document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+    }
+</script>
+
+<script type="text/javascript" src="js/impress.js"></script>
+<script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
+<script type="text/javascript">
+    function init() {
+        setTimeout(function() {
+            console.log('init');
+            impress().init();
+        }, 1000);
+    }
+</script>
 
 </body>
 </html>
