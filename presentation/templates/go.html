@@ -65,26 +65,76 @@
 </div>
 
 <div id="go-setup" data-title="Setup" data-timer="true" data-lang="go" class="step slide">
-    <q></q>
+    <q>
+        Install binaries from http://golang.org/doc/install
+        <code>
+            export GOROOT=$HOME/go
+            export PATH=$PATH:$GOROOT/bin
+        </code>
+    </q>
+</div>
+
+<div id="go-command" data-title="The Go Command" data-timer="true" data-lang="go" class="step slide">
+    <q>
+        Usage:
+        <code>go command [arguments]</code>
+        Examples:
+        <code>go run ex1-hello-world.go
+              go fmt ex3-variables.go
+        </code>
+    </q>
 </div>
 
 <div id="go-hello-world" data-title="Hello World" data-timer="true" data-lang="go" class="step slide">
-    <q></q>
+    <q>
+        <code>package main
+            import "fmt"
+            func main() {
+            &nbsp; &nbsp;fmt.Println("Hello World")
+            }
+        </code>
+    </q>
 </div>
 
 <div id="go-variables" data-title="Variables" data-timer="true" data-lang="go" class="step slide">
-    <q></q>
+    <q>
+        List of variables (type at end)
+        <code>var x, y, z int</code>
+        Initialized list of variables
+        <code>var x, y, z int = 1, 2, 3</code>
+    </q>
+</div>
+
+<div id="go-types" data-title="Basic Types" data-timer="true" data-lang="go" class="step slide">
+    <q>
+        bool, string, int (8, 16, 32, 64), uint (8, 16, 32, 64) uintptr, float32 (64), complex64 (128)
+        <br><br>Strings are stored as UTF8!
+    </q>
 </div>
 
 <div id="go-functions" data-title="Functions" data-timer="true" data-lang="go" class="step slide">
-    <q></q>
+    <q>
+        First class functions, higher-order functions, user-defined function types, function literals, closures, and multiple return values.
+    </q>
 </div>
 
 <div id="go-imports" data-title="Imports" data-timer="true" data-lang="go" class="step slide">
-    <q></q>
+    <q>
+        Individual import
+        <code>import "fmt"</code>
+        Factored import
+        <code>import (
+            &nbsp; &nbsp; "fmt"
+            &nbsp; &nbsp; "math"
+        )</code>
+    </q>
 </div>
 
 <div id="go-data-structures" data-title="Data Structures" data-timer="true" data-lang="go" class="step slide">
+    <q></q>
+</div>
+
+<div id="go-concurrency" data-title="Concurrency" data-timer="true" data-lang="go" class="step slide">
     <q></q>
 </div>
 
