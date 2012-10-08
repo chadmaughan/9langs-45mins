@@ -1,3 +1,77 @@
 <div id="prolog" data-title="Prolog" data-timer="true" data-lang="prolog" class="step slide">
     <q></q>
 </div>
+
+<div id="prolog-basic" data-title="Basic Information" data-timer="true" data-lang="prolog" class="step slide">
+    <q>
+      <ul>
+        <li><em>PRO</em>gramming <em>LOG</em>ic</li>
+        <li>Logic programming</li>
+        <li>Mind Bending</li>
+        <li>Will make you think outside the box</li>
+      </ul>
+    </q>
+</div>
+
+<div id="prolog-history" data-title="History" data-timer="true" data-lang="prolog" class="step slide">
+    <q>
+		<ul>
+			<li>Designed by Alain Colmerauer</li>
+			<li>In 1972</li>
+      <li>Created for Natural Language Processing</li>
+      <li>Most popular Logic language</li>
+      <li>Many implementations today</li>
+		<ul>
+	</q>
+</div>
+
+<div id="prolog-paradigm" data-title="Paradigm" data-timer="true" data-lang="prolog" class="step slide">
+    <q>
+		<ul>
+      <li>Logical</li>
+      <li>Declarative</li>
+		<ul>
+	</q>
+</div>
+
+<div id="prolog-hello-world" data-title="Hello World" data-timer="true" data-lang="prolog" class="step slide">
+    <q>
+        <code>
+          write('hello world!').
+        </code>
+    </q>
+</div>
+
+<div id="prolog-facts" data-title="Facts" data-timer="true" data-lang="prolog" class="step slide">
+    <q>
+      presenting(jonathan).
+      presenting(chad).
+      presenting(miles).
+      <br /><br />
+      uses_prolog(jonathan).
+      uses_prolog(bigbird).
+    </q>
+</div>
+
+<div id="prolog-rules" data-title="Rules" data-timer="true" data-lang="prolog" class="step slide">
+    <q>
+      <code>
+        presenting_prolog(Person) :-   
+        &nbsp;&nbsp;presenting(Person),
+        &nbsp;&nbsp;uses_prolog(Person).
+      </code>
+    </q>
+</div>
+
+<div id="prolog-queries" data-title="Queries" data-timer="true" data-lang="prolog" class="step slide">
+    <q>
+      <code>
+        ?- presenting_prolog(Who).
+        Who = jonathan
+      </code>
+    </q>
+</div>
+
+<div id="prolog-example" data-title="Example" data-timer="true" data-lang="prolog" class="step slide">
+    <q></q>
+</div>
