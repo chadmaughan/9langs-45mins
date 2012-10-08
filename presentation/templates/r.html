@@ -119,11 +119,20 @@
 
 <div id="r-graphs" data-title="Graphs" data-timer="true" data-lang="r" class="step slide">
     <q>
+        <code>data<-read.table("data.txt")
+              des<-data[grep("des",data$cond),]
+              hist(des$pre.wm.s)
+              hist(des$post.wm.s)
+        </code>
     </q>
 </div>
 
 <div id="r-statistical-analysis" data-title="Statistical Analysis" data-timer="true" data-lang="r" class="step slide">
     <q>
+        <code>data<-read.table("data.txt")
+              des<-data[grep("des",data$cond),]
+              describe(des)
+        </code>
     </q>
 </div>
 
@@ -132,10 +141,6 @@
         You can run saved scripts
         <code>$r CMD BATCH ./ex1-variables.r</code>
     </q>
-</div>
-
-<div id="r-samples" data-title="Other Sample Code" data-timer="true" data-lang="r" class="step slide">
-    <q><p>http://github.com/chadmaughan/learn-r</p></q>
 </div>
 
 <div id="r-books" data-title="Books" data-timer="true" data-lang="r" class="step slide">
