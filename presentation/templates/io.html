@@ -89,24 +89,46 @@
     </q>
 </div>
 
-<div id="io-variables" data-title="Variables" data-timer="true" data-lang="io" class="step slide">
-    <q></q>
+<div id="io-primitives" data-title="Primitives" data-timer="true" data-lang="io" class="step slide">
+    <q>
+        <ul>
+            <li>Object</li>
+            <li>List</li>
+            <li>Sequence</li>
+            <li>Range</li>
+            <li>Date</li>
+            <li>XML, Vector, File, Directory</li>
+        </ul>
+    </q>
 </div>
 
 <div id="io-prototypes" data-title="Prototypes" data-timer="true" data-lang="io" class="step slide">
-    <q></q>
+    <q>
+        <code>Foo := Object clone
+        Foo score := 21
+        Foo add := method(x, y, x + y)
+        a := Foo add(3,7)
+        a println
+        </code>
+    </q>
 </div>
 
-<div id="io-concurrency" data-title="Concurrency" data-timer="true" data-lang="io" class="step slide">
-    <q></q>
+<div id="io-messages" data-title="Messages" data-timer="true" data-lang="io" class="step slide">
+    <q>
+        <code>o1 := Object clone
+            o1 test := method(
+            &nbsp; &nbsp; for(n, 1, 3, n print; yield))
+            o2 := o1 clone
+
+            // send an asynchronous msg
+            o1 @test; o2 @test</code>
+    </q>
 </div>
 
 <div id="io-actors" data-title="Actors" data-timer="true" data-lang="io" class="step slide">
-    <q></q>
-</div>
-
-<div id="io-example" data-title="Example" data-timer="true" data-lang="io" class="step slide">
-    <q></q>
+    <q>Accesses other actors only through controlled queues. <br><br>
+        Sending an asynchronous message to any object makes it an actor!
+    </q>
 </div>
 
 <div id="io-books" data-title="Books" data-timer="true" data-lang="io" class="step slide">
@@ -114,6 +136,7 @@
         <ul>
             <li>Seven Languages in Seven Weeks</li>
             <li>http://www.iolanguage.com/scm/io/docs/IoGuide.html</li>
+            <li>http://hyperpolyglot.org/embeddable</li>
         </ul>
     </q>
 </div>
