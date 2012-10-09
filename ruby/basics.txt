@@ -1,0 +1,55 @@
+Ruby Basics
+===========
+
+Hello World
+-----------
+
+puts "Hello World"
+
+Variables
+---------
+
+a = 35
+
+puts "The number is #{a}"
+
+Block
+-----
+
+list = [1,2,"three"]
+
+list.each do |l|
+  puts l
+end
+
+Function
+--------
+
+def h(name = "World")
+  puts "Hey #{name.capitalize}"
+end
+
+h "miles"
+
+Class
+-----
+
+class Greeter
+  def initialize(name = "World")
+    @name = name
+  end
+  
+  def say_hi
+    puts "Hi #{@name}!"
+  end
+  
+  def say_bye
+    puts "Bye #{@name}, come back soon."
+  end
+end
+
+g = Greeter.new("Miles")
+g.say_hi
+
+
+http://www.ruby-lang.org/en/documentation/quickstart/

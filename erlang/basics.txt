@@ -1,0 +1,71 @@
+Erlang Basics
+=============
+
+Comments
+--------
+
+% Start with a % goes to end of line
+
+Variables
+---------
+
+% Must start with capitalized letter
+Var = 1.
+
+% Expressions end with a period.
+
+Atom
+----
+
+% Word starting with lowercase letter
+
+atom.
+
+List
+----
+
+[1,2,"three"].
+
+Tuple (use like has)
+--------------------
+
+{person, {name,"Miles Pomeroy"}, {age, 30}}.
+
+Pattern Matching
+----------------
+
+8> Person = {person, {name,"Miles Pomeroy"}, {age, 30}}.
+{person,{name,"Miles Pomeroy"},{age,30}}
+9> {person, {name,Name}, {age, Age}} = Person.          
+{person,{name,"Miles Pomeroy"},{age,30}}
+10> Name.
+"Miles Pomeroy"
+11> Age.
+30
+12>
+
+Head | Tail List Pattern Matching
+---------------------------------
+
+28> [Head | Tail] = [1, 2, 3].
+[1,2,3]29> Head.130> Tail. [2,3]
+
+Run a Module
+------------
+
+4> c(useless).     
+{ok,useless}
+5> useless:greet_and_add_two(3).
+Hello, world!
+5
+6> useless:add(1,2).
+3
+7>
+
+Tail Recursion
+--------------
+
+recursion.erl
+
+c(recursion).
+recursion:countdown(200).

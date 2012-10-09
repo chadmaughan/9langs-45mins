@@ -1,0 +1,119 @@
+Scala Basics
+============
+
+Variables
+---------
+
+val x = 1 // immutable
+var y = 2 // mutable
+
+// Note: type inference at compile time
+
+Types
+-----
+
+> a = 0 to 10 // range
+> b = ("name", "Miles") // tuple
+
+> b._1
+name
+> b._2
+Miles
+
+Loops
+-----
+
+for (i <- 0 until 10) {
+  println(i)
+}
+
+// also an example of an higher order function
+aList.foreach { item =>
+  println(item)
+}
+
+Functions
+---------
+
+def double(x:Int):Int = {
+  x*2}
+
+double(6)
+
+Classes
+-------
+
+class simple (val name: String)
+
+class complex (val x: Int, val y: Int) {
+  val person = simple("Bob")
+
+  def whereAmI() {
+    println("You're at " + x + " and " + y)
+  }
+  
+  def whoAmI() {
+    println("You are " + person.name)
+  }
+}
+
+List
+----
+
+> aList = List("one", "two", 3)
+> aList(2)
+Any = 3
+> aList.head
+one
+> aList.tail
+List(two, 3)
+> aList.last
+3
+> aList.init
+List(one, two)
+
+> Nil
+Nil.type = List()
+
+Set
+---
+
+// List without order
+
+> animals = Set("lions", "tigers", "bears")
+Set(lions, tigers, bears)
+> animals + "turkeys"
+Set(lions, tigers, bears, turkeys)
+> animals ++ Set("alligators", "mice")
+Set(lions, tigers, bears, alligators, mice)
+
+// also -, --, and ** (intersection)
+
+Map
+---
+
+// immutable variety
+> val ordinals = Map(0 -> "zero", 1 -> "one", 2 -> "two")
+> ordinals(2)
+two
+
+// mutable variety
+> import scala.collection.mutable.HashMap> val map = new HashMap[Int, String]
+> map += 4 -> "hello"
+
+Higher Order Functions
+----------------------
+
+// foldLeft
+scala> val list = List(1, 2, 3)
+list: List[Int] = List(1, 2, 3)scala> val sum = (0 /: list) {(sum, i) => sum + i}
+sum: Int = 6
+scala> list.foldLeft(0)((sum, value) => sum + value)
+res54: Int = 6
+
+Pattern Matching
+----------------
+
+def doChore(chore: String): String = chore match {
+  case "clean dishes" => "scrub, dry"  case "cook dinner" => "chop, sizzle"  case _ => "whine, complain"}println(doChore("clean dishes"))
+println(doChore("mow lawn"))
